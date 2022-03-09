@@ -1,0 +1,21 @@
+{
+  "name": "zeroeditor",
+  "version": "1.0.0",
+  "description": "A rich text editor starting from zero",
+  "main": "src/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fenglizhu/zeroEditor.git"
+  },
+  "author": "zhufengli <13265049537@139.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fenglizhu/zeroEditor/issues"
+  },
+  "homepage": "https://github.com/fenglizhu/zeroEditor#readme"
+}
