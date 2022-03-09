@@ -1,6 +1,7 @@
 {
   "name": "zeroeditor",
-  "version": "1.0.0",
+  "version": "0.1.0",
+  "private": false,
   "description": "A rich text editor starting from zero",
   "main": "src/index.js",
   "types": "dist/index.d.ts",
@@ -8,6 +9,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -w"
   },
+  "keywords": [
+    "editor",
+    "typescript"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fenglizhu/zeroEditor.git"
@@ -17,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/fenglizhu/zeroEditor/issues"
   },
-  "homepage": "https://github.com/fenglizhu/zeroEditor#readme"
+  "homepage": "https://github.com/fenglizhu/zeroEditor#readme",
+  "devDependencies": {
+    "typescript": "^4.6.2"
+  }
 }
