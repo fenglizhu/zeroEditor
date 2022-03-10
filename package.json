@@ -1,16 +1,18 @@
 {
   "name": "zeroeditor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "description": "A rich text editor starting from zero",
-  "main": "src/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/zeroEditor.js",
+  "types": "dist/zeroEditor.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -w"
+    "build": "tsc -w",
+    "release": "tsc && npm publish",
+    "dev": "cross-env NODE_ENV=development webpack --watch --config build/webpack.dev.js"
   },
   "keywords": [
-    "editor",
+    "编辑器",
+    "富文本编辑器",
     "typescript"
   ],
   "repository": {
@@ -24,6 +26,11 @@
   },
   "homepage": "https://github.com/fenglizhu/zeroEditor#readme",
   "devDependencies": {
-    "typescript": "^4.6.2"
+    "babel-loader": "^8.2.3",
+    "cross-env": "^7.0.3",
+    "ts-loader": "^9.2.7",
+    "typescript": "^4.6.2",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
   }
 }

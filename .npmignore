@@ -9,5 +9,6 @@ docs/
 .eslintrc.js
 .github/
 test/  
+dist/  
 .github/  
 test.js

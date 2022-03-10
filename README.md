@@ -2,7 +2,7 @@
 
 ## Install
 ```
-npm install zeroEditor
+npm install zeroeditor
 ```
 
 ## Vue使用
