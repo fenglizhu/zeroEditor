@@ -47,6 +47,23 @@ import { toArray } from './utils'
     append(node: HTMLElement) {
         this.containerElement.appendChild(node);
     }
+
+    /**
+     * 在前面插入子节点
+     * @param node 子节点
+     * @param child 子节点
+     */
+    insertBefore(node: HTMLElement, child:Node) {
+        this.containerElement.insertBefore(node, child);
+    }
+
+    /**
+     * 
+     * @returns 
+     */
+    parent(): HTMLElement{
+        return this.containerElement.parentElement
+    }
 }
 
 /**
