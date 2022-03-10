@@ -45,7 +45,6 @@ export class ZeroEditors {
                 }
             }
         }
-        console.log(this.zoroContainer);
         
     }
     /**

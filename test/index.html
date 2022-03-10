@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        h1,h2,h3,h4,h5,h6,ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li,ol{
+            list-style: none;
+        }
         .zero-container{
             padding: 0 10px;
             border: 1px solid #f4f4f5;
@@ -15,16 +22,197 @@
             margin: 10px 0;
             line-height: 1.5;
         }
+        .z-tool-bar{
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid #f4f4f5;
+            border-bottom: none;
+        }
+        .tool-bar-item-toast{
+            display: none;
+        }
+        .z-tool-bar .z-tool-bar-item{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        .z-tool-bar .z-tool-bar-item:hover{
+            background: #f4f4f5;
+        }
+        .z-tool-bar .z-tool-bar-item:hover .tool-bar-item-toast{
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: -40px;
+            word-break: keep-all;
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 0 5px;
+            line-height: 32px;
+            transform: translate(-50%, 0);
+            border-radius: 4px;
+            font-size: 13px;
+        }
+        .z-tool-bar .z-tool-bar-item:hover::after{
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -8px;
+            border: 8px solid rgba(0,0,0,0.8);
+            transform: translate(-50%, 0);
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+        }
+        .tool-bar-item-panel{
+            display: none;
+            position: absolute;
+            padding: 0;
+            left: 0;
+            top: 40px;
+            z-index: 2;
+            width: 100px;
+            background: #fff;
+            box-shadow: 0px 0px 11px 2px #f1f1f1;
+        }
+        .z-tool-bar .z-tool-bar-item:hover .tool-bar-item-panel{
+            display: block;
+        }
+        .tool-bar-item-panel .tbip-item{
+            padding: 5px 10px;
+        }
+        .tool-bar-item-panel .tbip-item:hover{
+            background: #f4f4f5;
+        }
+
     </style>
 </head>
 <body>
-    <div id="index">
+    <div id="index" style="margin-top: 100px;">
+        <div class="z-tool-bar">
+            <div class="z-tool-bar-item">
+                <span>H</span>
+                <div class="tool-bar-item-toast">标题</div>
+                <ul class="tool-bar-item-panel">
+                    <li class="tbip-item"><h1>H1</h1></li>
+                    <li class="tbip-item"><h2>H2</h2></li>
+                    <li class="tbip-item"><h3>H3</h3></li>
+                    <li class="tbip-item"><h4>H4</h4></li>
+                    <li class="tbip-item"><h5>H5</h5></li>
+                    <li class="tbip-item"><h6>H6</h6></li>
+                </ul>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>B</span>
+                <div class="tool-bar-item-toast">加粗</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>S</span>
+                <div class="tool-bar-item-toast">字号</div>
+                <ul class="tool-bar-item-panel">
+                    <li class="tbip-item">10</li>
+                    <li class="tbip-item">11</li>
+                    <li class="tbip-item">12</li>
+                    <li class="tbip-item">14</li>
+                    <li class="tbip-item">16</li>
+                    <li class="tbip-item">18</li>
+                    <li class="tbip-item">20</li>
+                    <li class="tbip-item">22</li>
+                    <li class="tbip-item">24</li>
+                    <li class="tbip-item">36</li>
+                </ul>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>F</span>
+                <div class="tool-bar-item-toast">字体</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>I</span>
+                <div class="tool-bar-item-toast">斜体</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>U</span>
+                <div class="tool-bar-item-toast">下划线</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>S</span>
+                <div class="tool-bar-item-toast">缩进</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>B</span>
+                <div class="tool-bar-item-toast">行高</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>H</span>
+                <div class="tool-bar-item-toast">文本颜色</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>B</span>
+                <div class="tool-bar-item-toast">背景颜色</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>H</span>
+                <div class="tool-bar-item-toast">链接</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>B</span>
+                <div class="tool-bar-item-toast">序列</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>H</span>
+                <div class="tool-bar-item-toast">对齐</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>B</span>
+                <div class="tool-bar-item-toast">引用</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>H</span>
+                <div class="tool-bar-item-toast">表情</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>B</span>
+                <div class="tool-bar-item-toast">图片</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>H</span>
+                <div class="tool-bar-item-toast">视频</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>B</span>
+                <div class="tool-bar-item-toast">表格</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>H</span>
+                <div class="tool-bar-item-toast">代码</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>B</span>
+                <div class="tool-bar-item-toast">分割线</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>H</span>
+                <div class="tool-bar-item-toast">撤销</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>B</span>
+                <div class="tool-bar-item-toast">恢复</div>
+            </div>
+            <div class="z-tool-bar-item">
+                <span>H</span>
+                <div class="tool-bar-item-toast">全屏</div>
+            </div>
+        </div>
         
     </div>
     <script src="../dist/zeroEditor.js"></script>
     <script>
         let zero = new zeroEditor('index')
-        console.log(zero);
+        // console.log(zero);
     </script>
 </body>
 </html>

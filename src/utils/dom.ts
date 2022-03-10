@@ -77,6 +77,16 @@ export function createElemByHTML(html:string): HTMLElement[] {
     return toArray(div.children);
 }
 
+/**
+ * 通过tag名字创建dom元素
+ * @param tag 
+ * @returns 
+ */
+export function createElemByTag(tag:string): HTMLElement {
+    const div:HTMLElement = document.createElement(tag);
+    return div;
+}
+
 export function $$(id:string) {
     return new DomElement(id);
 }
