@@ -6,8 +6,6 @@
   "main": "dist/zeroEditor.js",
   "types": "dist/zeroEditor.d.ts",
   "scripts": {
-    "build": "tsc -w",
-    "release": "tsc && npm publish",
     "dev": "cross-env NODE_ENV=development webpack --watch --config build/webpack.dev.js"
   },
   "keywords": [
