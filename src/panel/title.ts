@@ -1,24 +1,24 @@
-import { createElemByTag } from '../utils/dom'
+import { createElemByHTML, DomElement } from '../utils/dom'
 
 import menusConfig from '../config/menus'
 
 class Title {
     public $titleEle!: HTMLElement;
+    public name: string | undefined;
+    public $elem: DomElement[] | undefined
     constructor() {
-        this.initTitle()
+        this.initPanel()
     }
-    initTitle() {
-        let $ul = createElemByTag('ul');
-        $ul.className = 'tool-bar-item-panel'
+    initPanel() {
+        let $ul: DomElement[] = createElemByHTML(`
+            <ul class="tool-bar-item-panel"></ul>
+        `);
         for (let i = 0; i < menusConfig.title.length; i++) {
-            let $li = createElemByTag('li');
-            $li.className = 'tbip-item'
-            $li.innerHTML = `<${menusConfig.title[i]}>${menusConfig.title[i]}</${menusConfig.title[i]}>`
-            $ul.appendChild($li);
+            let html = `<li class="tbip-item"><${menusConfig.title[i]}>${menusConfig.title[i]}</${menusConfig.title[i]}></li>`
+            let $li = createElemByHTML(html)
+            $ul[0].append($li);
         }
-        this.$titleEle = $ul;
-        console.log(this.$titleEle);
-        
+        this.$elem = $ul;
     }
 }
 

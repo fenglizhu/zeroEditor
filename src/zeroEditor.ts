@@ -4,7 +4,8 @@
  import { 
     $$,
     createElemByHTML,
-    DomElement
+    DomElement,
+    documentSeloctor
 } from './utils/dom';
 
 import Toolbar from './editor/tool-bar'
@@ -13,14 +14,15 @@ import Toolbar from './editor/tool-bar'
  * 编辑器类
  */
 export class ZeroEditors {
-    public id: string;
+    public id: documentSeloctor;
     public zoroContainer!: DomElement;
-    constructor(id: string) {
+    public panel !: DomElement<documentSeloctor>[];
+    public Title !: Object;
+    public toolbar!: DomElement<documentSeloctor>[];
+    constructor(id: documentSeloctor) {
         this.id = id;
         // 初始化编辑器内容
         this.init();
-        // 初始化编辑器导航
-        this.initToolBar();
     }
     /**
      * 初始化
@@ -38,11 +40,9 @@ export class ZeroEditors {
         if(children && children.length) {
 
         }else {
-            let p: HTMLElement[] = createElemByHTML('<p><br></p>');
+            let p: DomElement[] = createElemByHTML('<p><br></p>');
             if(p.length) {
-                for (let i = 0; i < p.length; i++) {
-                    this.zoroContainer.append(p[i]);
-                }
+                this.zoroContainer.append(p);
             }
         }
         
@@ -50,14 +50,15 @@ export class ZeroEditors {
     /**
      * 初始化toolbar
      */
-    initToolBar() {
-        let parent = this.zoroContainer.parent();
-        let toolBarContainer: HTMLElement[] = new Toolbar().toolBarContainer;
-        if(toolBarContainer.length) {
-            for (let i = 0; i < toolBarContainer.length; i++) {
-                parent.insertBefore(toolBarContainer[i],this.zoroContainer.containerElement);
-            }
-        }
+    private initToolBar() {
+        let toolBarContainer: DomElement[] = new Toolbar(this).toolBarContainer;
+        this.zoroContainer.insertBefore(toolBarContainer);
+    }
+
+    create() {
+        // 初始化编辑器导航
+        this.initToolBar();
+        
     }
 };
 

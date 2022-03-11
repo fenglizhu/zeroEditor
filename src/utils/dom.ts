@@ -1,15 +1,33 @@
 /**
  * DOM操作
  */
-import { toArray } from './utils'
+import { toArray } from './utils';
+
+export type documentSeloctor = 
+    | string
+    | DomElement
+    | Document
+    | Node
+    | NodeList
+    | ChildNode
+    | ChildNode[]
+    | Element
+    | HTMLElement
+    | HTMLElement[]
+    | HTMLCollection
+    | EventTarget
+    | null
+    | undefined
+
 /**
  * 创建DOM操作
  */
-  export class DomElement {
-    public id: string;
+  export class DomElement<T extends documentSeloctor = documentSeloctor> {
+    public selotor ?: documentSeloctor;
     public containerElement: any;
-    constructor(id: string) {
-        this.id = id;
+    public innerHTML: string | undefined;
+    constructor(selotor: documentSeloctor) {
+        this.selotor = selotor;
         this.containerElement = null;
         this.initDom();
     }
@@ -17,6 +35,11 @@ import { toArray } from './utils'
      * 初始化dom
      */
     initDom() {
+        console.log(this.selotor);
+        
+        let containerElem = createElemByHTML(this.selotor)
+        console.log(containerElem);
+        
         let node: Node = document.createElement('div');
         let containerBox = document.getElementById(this.id);
         if(!containerBox) {
@@ -44,17 +67,24 @@ import { toArray } from './utils'
      * 插入子节点
      * @param {*} node 子节点
      */
-    append(node: HTMLElement) {
-        this.containerElement.appendChild(node);
+    append(children: DomElement[]) {
+        children.forEach(child => {
+            this.containerElement.appendChild(child);
+        });
     }
 
     /**
      * 在前面插入子节点
-     * @param node 子节点
-     * @param child 子节点
+     * @param node 子节点集合
      */
-    insertBefore(node: HTMLElement, child:Node) {
-        this.containerElement.insertBefore(node, child);
+    insertBefore(node: DomElement[]) {
+        let parent = this.parent();
+        if(node.length) {
+            for (let i = 0; i < node.length; i++) {
+                let nodeChild: any = node[i];
+                parent?.insertBefore(nodeChild, this.containerElement);
+            }
+        }
     }
 
     /**
@@ -62,7 +92,7 @@ import { toArray } from './utils'
      * @returns 
      */
     parent(): HTMLElement{
-        return this.containerElement.parentElement
+        return this.containerElement.parentNode
     }
 }
 
@@ -71,22 +101,12 @@ import { toArray } from './utils'
  * @param {*} html 
  * @returns 
  */
-export function createElemByHTML(html:string): HTMLElement[] {
+export function createElemByHTML(html:string): DomElement[] {
     const div:HTMLElement = document.createElement('div');
     div.innerHTML = html;
     return toArray(div.children);
 }
 
-/**
- * 通过tag名字创建dom元素
- * @param tag 
- * @returns 
- */
-export function createElemByTag(tag:string): HTMLElement {
-    const div:HTMLElement = document.createElement(tag);
-    return div;
-}
-
-export function $$(id:string) {
-    return new DomElement(id);
+export function $$(arg: ConstructorParameters<typeof DomElement>): DomElement {
+    return new DomElement(...arg);
 }
